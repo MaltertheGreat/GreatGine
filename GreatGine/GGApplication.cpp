@@ -1,12 +1,12 @@
 #include "GGApplication.h"
 
 GGApplication::GGApplication(HINSTANCE hInstance, const std::wstring& title)
-{
-	int width = 1280;
-	int height = 720;
-
-	MakeWindow(hInstance, title, width, height);
-}
+	:
+	m_width(1280),
+	m_height(720),
+	m_hwnd(MakeWindow(hInstance, title, m_width, m_height)),
+	m_graphics(m_hwnd, m_width, m_height)
+{}
 
 void GGApplication::Run(int nCmdShow)
 {
@@ -27,8 +27,15 @@ void GGApplication::Run(int nCmdShow)
 	}
 }
 
-void GGApplication::MakeWindow(HINSTANCE hInstance, const std::wstring& title, int width, int height)
+void GGApplication::Update()
 {
+	m_graphics.Update();
+}
+
+HWND GGApplication::MakeWindow(HINSTANCE hInstance, const std::wstring& title, int width, int height)
+{
+	HWND hWnd = nullptr;
+
 	WNDCLASS wc = {};
 
 	wc.lpfnWndProc = WindowProc;
@@ -38,26 +45,24 @@ void GGApplication::MakeWindow(HINSTANCE hInstance, const std::wstring& title, i
 	RegisterClass(&wc);
 
 	DWORD  dwStyle = WS_OVERLAPPEDWINDOW;
-	RECT area = {0 , 0, width, height};
 
+	RECT area = { 0 , 0, width, height };
 	AdjustWindowRect(&area, dwStyle, FALSE);
 	width = area.right - area.left;
 	height = area.bottom - area.top;
 
-	m_hwnd = CreateWindow(
+	hWnd = CreateWindow(
 		title.c_str(), title.c_str(),
 		dwStyle,
 		CW_USEDEFAULT, CW_USEDEFAULT, width, height,
 		NULL, NULL, hInstance, NULL);
 
-	if (m_hwnd == NULL)
+	if (hWnd == NULL)
 	{
 		throw std::exception();
 	}
-}
 
-void GGApplication::Update()
-{
+	return hWnd;
 }
 
 LRESULT GGApplication::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)

@@ -4,6 +4,7 @@
 #include <exception>
 #include <string>
 
+#include "GGGraphics.h"
 
 class GGApplication
 {
@@ -14,10 +15,13 @@ public:
 	void Run(int nCmdShow);
 
 private:
-	void MakeWindow(HINSTANCE hInstance, const std::wstring& title, int width, int height);
 	void Update();
+	static HWND MakeWindow(HINSTANCE hInstance, const std::wstring& title, int width, int height);
 	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 private:
-	HWND m_hwnd = NULL;
+	int m_width;
+	int m_height;
+	HWND m_hwnd;
+	GGGraphics m_graphics;
 };
