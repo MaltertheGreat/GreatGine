@@ -1,11 +1,11 @@
 #include "GGApplication.h"
 
-int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR, int nCmdShow)
+int WINAPI wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ LPWSTR, _In_ int nShowCmd)
 {
 	try
 	{
 		GGApplication app(hInstance, L"GreatGine");
-		app.Run(nCmdShow);
+		app.Run(nShowCmd);
 	}
 	catch (std::exception& err)
 	{

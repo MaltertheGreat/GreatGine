@@ -9,6 +9,15 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{2bad02e8-ae2a-4375-bd42-eb2de9e97cc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GGGraphics">
+      <UniqueIdentifier>{70ca7caa-5eb7-4082-8948-cbac04caffb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GGGraphics">
+      <UniqueIdentifier>{50d04586-6b74-4f39-b07a-76d18659df55}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GreatGine.cpp">
@@ -20,19 +29,27 @@
     <ClCompile Include="GGGraphics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GGRenderer.cpp">
+      <Filter>Source Files\GGGraphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GGApplication.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GGGraphics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GGRenderer.h">
+      <Filter>Header Files\GGGraphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="VertexShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="PixelShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>
