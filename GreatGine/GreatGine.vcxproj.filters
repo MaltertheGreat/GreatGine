@@ -32,6 +32,12 @@
     <ClCompile Include="GGRenderer.cpp">
       <Filter>Source Files\GGGraphics</Filter>
     </ClCompile>
+    <ClCompile Include="GGMesh.cpp">
+      <Filter>Source Files\GGGraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GGShader.cpp">
+      <Filter>Source Files\GGGraphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GGApplication.h">
@@ -41,6 +47,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GGRenderer.h">
+      <Filter>Header Files\GGGraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GGMesh.h">
+      <Filter>Header Files\GGGraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GGShader.h">
       <Filter>Header Files\GGGraphics</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "GGRenderer.h"
+#include "GGMesh.h"
+#include "GGShader.h"
 
 class GGGraphics
 {
