@@ -38,6 +38,9 @@
     <ClCompile Include="GGShader.cpp">
       <Filter>Source Files\GGGraphics</Filter>
     </ClCompile>
+    <ClCompile Include="GGCamera.cpp">
+      <Filter>Source Files\GGGraphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GGApplication.h">
@@ -53,6 +56,9 @@
       <Filter>Header Files\GGGraphics</Filter>
     </ClInclude>
     <ClInclude Include="GGShader.h">
+      <Filter>Header Files\GGGraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GGCamera.h">
       <Filter>Header Files\GGGraphics</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,6 @@
 #include "GGRenderer.h"
 using Microsoft::WRL::ComPtr;
 using namespace std;
-using namespace DirectX;
 
 GGRenderer::GGRenderer(HWND hWnd, int width, int height)
 {

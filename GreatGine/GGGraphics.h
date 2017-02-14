@@ -3,6 +3,7 @@
 #include "GGRenderer.h"
 #include "GGMesh.h"
 #include "GGShader.h"
+#include "GGCamera.h"
 
 class GGGraphics
 {
@@ -17,6 +18,7 @@ private:
 
 private:
 	GGRenderer m_renderer;
+	GGCamera m_camera;
 	GGShader m_testShader;
 	GGMesh m_testMesh;
 };

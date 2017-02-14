@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <DirectXMath.h>
 #include "GGRenderer.h"
 
 class GGMesh

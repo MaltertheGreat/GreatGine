@@ -172,6 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GGApplication.cpp" />
+    <ClCompile Include="GGCamera.cpp" />
     <ClCompile Include="GGGraphics.cpp" />
     <ClCompile Include="GGMesh.cpp" />
     <ClCompile Include="GGRenderer.cpp" />
@@ -180,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GGApplication.h" />
+    <ClInclude Include="GGCamera.h" />
     <ClInclude Include="GGGraphics.h" />
     <ClInclude Include="GGMesh.h" />
     <ClInclude Include="GGRenderer.h" />
