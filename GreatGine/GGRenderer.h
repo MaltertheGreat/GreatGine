@@ -17,33 +17,32 @@ class GGRenderer
 public:
 	GGRenderer(HWND hWnd, int width, int height);
 
-public:
-	template<typename Resource, typename... Types>
-	Resource Make(Types... args)
+	template <typename Resource, typename... Types>
+	Resource Make(Types ... args)
 	{
 		return Resource(m_directX, args...);
 	}
 
-	template<typename Resource, typename... Types>
-	void Set(Resource& resource, Types... args)
+	template <typename Resource, typename... Types>
+	void Set(Resource& resource, Types ... args)
 	{
 		resource.Set(m_directX, args...);
 	}
 
-	template<typename Resource, typename... Types>
-	void Update(Resource& resource, Types... args)
+	template <typename Resource, typename... Types>
+	void Update(Resource& resource, Types ... args)
 	{
 		resource.Update(m_directX, args...);
 	}
 
-	template<typename Resource, typename... Types>
-	void Render(const Resource& resource, Types... args)
+	template <typename Resource, typename... Types>
+	void Render(const Resource& resource, Types ... args)
 	{
 		resource.Render(m_directX, args...);
 	}
 
-	void StartFrame(const std::array<float, 4> color);
-	void EndFrame();
+	void StartFrame(const std::array<float, 4> color) const;
+	void EndFrame() const;
 
 private:
 	GGDirectX m_directX;

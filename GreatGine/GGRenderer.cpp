@@ -9,10 +9,10 @@ GGRenderer::GGRenderer(HWND hWnd, int width, int height)
 	createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
 
-	const array<D3D_FEATURE_LEVEL, 1> featureLevels = { D3D_FEATURE_LEVEL_11_0 };
+	const array<D3D_FEATURE_LEVEL, 1> featureLevels{D3D_FEATURE_LEVEL_11_0};
 
 	DXGI_SWAP_CHAIN_DESC sd;
-	ZeroMemory(&sd, sizeof(sd));
+	ZeroMemory(&sd, sizeof sd);
 	sd.BufferCount = 1;
 	sd.BufferDesc.Width = width;
 	sd.BufferDesc.Height = height;
@@ -25,15 +25,18 @@ GGRenderer::GGRenderer(HWND hWnd, int width, int height)
 	sd.SampleDesc.Quality = 0;
 	sd.Windowed = TRUE;
 
-	HRESULT hr = D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, createDeviceFlags, featureLevels.data(), featureLevels.size(), D3D11_SDK_VERSION, &sd, m_directX.swapChain.GetAddressOf(), m_directX.device.GetAddressOf(), nullptr, m_directX.deviceContext.GetAddressOf());
-	if FAILED(hr) throw std::exception();
+	auto hr = D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, createDeviceFlags, featureLevels.data(), featureLevels.size(), D3D11_SDK_VERSION, &sd, m_directX.swapChain.GetAddressOf(), m_directX.device.GetAddressOf(), nullptr, m_directX.deviceContext.GetAddressOf());
+	if (FAILED(hr))
+		throw exception();
 
 	ComPtr<ID3D11Texture2D> backBuffer;
 	hr = m_directX.swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(backBuffer.GetAddressOf()));
-	if FAILED(hr) throw std::exception();
+	if (FAILED(hr))
+		throw exception();
 
 	hr = m_directX.device->CreateRenderTargetView(backBuffer.Get(), nullptr, &m_directX.renderTargetView);
-	if FAILED(hr) throw std::exception();
+	if (FAILED(hr))
+		throw exception();
 
 	m_directX.deviceContext->OMSetRenderTargets(1, m_directX.renderTargetView.GetAddressOf(), nullptr);
 
@@ -47,12 +50,12 @@ GGRenderer::GGRenderer(HWND hWnd, int width, int height)
 	m_directX.deviceContext->RSSetViewports(1, &vp);
 }
 
-void GGRenderer::StartFrame(const array<float, 4> color)
+void GGRenderer::StartFrame(const array<float, 4> color) const
 {
 	m_directX.deviceContext->ClearRenderTargetView(m_directX.renderTargetView.Get(), color.data());
 }
 
-void GGRenderer::EndFrame()
+void GGRenderer::EndFrame() const
 {
 	m_directX.swapChain->Present(1, 0);
 }

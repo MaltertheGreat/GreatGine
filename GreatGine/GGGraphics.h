@@ -4,21 +4,23 @@
 #include "GGMesh.h"
 #include "GGShader.h"
 #include "GGCamera.h"
+#include "GGFreeView.h"
+
+class GGInput;
 
 class GGGraphics
 {
 public:
-	GGGraphics(HWND hWnd, int width, int height);
+	GGGraphics(GGInput& input, HWND hWnd, int width, int height);
 
-public:
-	void Update();
+	void Update(GGInput& input);
 
 private:
 	void Render();
 
-private:
 	GGRenderer m_renderer;
 	GGCamera m_camera;
+	GGFreeView m_viewer;
 	GGShader m_testShader;
 	GGMesh m_testMesh;
 };

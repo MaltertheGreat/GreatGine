@@ -7,6 +7,8 @@
 class GGMesh
 {
 public:
+	friend class GGRenderer;
+
 	struct GGVertex
 	{
 		DirectX::XMFLOAT3 position;
@@ -14,20 +16,14 @@ public:
 
 	typedef unsigned int GGIndex;
 
-public:
-	GGMesh()
-	{}
+	GGMesh();
 
 private:
-	friend class GGRenderer;
-
 	GGMesh(GGDirectX& directX, std::vector<GGVertex>& vertices, std::vector<GGIndex>& indices);
 
-private:
 	void Set(const GGDirectX& directX) const;
 	void Render(const GGDirectX& directX) const;
 
-private:
 	UINT m_indexCount = 0;
 	Microsoft::WRL::ComPtr<ID3D11Buffer> m_vertexBuffer;
 	Microsoft::WRL::ComPtr<ID3D11Buffer> m_indexBuffer;

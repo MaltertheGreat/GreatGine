@@ -1,9 +1,8 @@
 #pragma once
 
 #include <Windows.h>
-#include <exception>
-#include <string>
 
+#include "GGInput.h"
 #include "GGGraphics.h"
 
 class GGApplication
@@ -11,7 +10,6 @@ class GGApplication
 public:
 	GGApplication(HINSTANCE hInstance, const std::wstring& title);
 
-public:
 	void Run(int nCmdShow);
 
 private:
@@ -19,9 +17,9 @@ private:
 	static HWND MakeWindow(HINSTANCE hInstance, const std::wstring& title, int width, int height);
 	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-private:
 	int m_width;
 	int m_height;
 	HWND m_hwnd;
+	GGInput m_input;
 	GGGraphics m_graphics;
 };

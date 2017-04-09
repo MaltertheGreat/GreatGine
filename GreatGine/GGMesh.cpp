@@ -3,6 +3,9 @@ using Microsoft::WRL::ComPtr;
 using namespace std;
 using namespace DirectX;
 
+GGMesh::GGMesh()
+{}
+
 GGMesh::GGMesh(GGDirectX& directX, vector<GGVertex>& vertices, vector<GGIndex>& indices)
 {
 	m_indexCount = indices.size();
@@ -20,8 +23,9 @@ GGMesh::GGMesh(GGDirectX& directX, vector<GGVertex>& vertices, vector<GGIndex>& 
 	initData.SysMemPitch = 0;
 	initData.SysMemSlicePitch = 0;
 
-	HRESULT hr = directX.device->CreateBuffer(&bufferDesc, &initData, m_indexBuffer.GetAddressOf());
-	if FAILED(hr) throw std::exception();
+	auto hr = directX.device->CreateBuffer(&bufferDesc, &initData, m_indexBuffer.GetAddressOf());
+	if (FAILED(hr))
+		throw exception();
 
 	// Vertex buffer
 	bufferDesc.ByteWidth = vertices.size() * sizeof(GGVertex);
@@ -30,12 +34,13 @@ GGMesh::GGMesh(GGDirectX& directX, vector<GGVertex>& vertices, vector<GGIndex>& 
 	initData.pSysMem = vertices.data();
 
 	hr = directX.device->CreateBuffer(&bufferDesc, &initData, m_vertexBuffer.GetAddressOf());
-	if FAILED(hr) throw std::exception();
+	if (FAILED(hr))
+		throw exception();
 }
 
 void GGMesh::Set(const GGDirectX& directX) const
 {
-	UINT stride = sizeof(GGVertex);
+	auto stride = sizeof(GGVertex);
 	UINT offset = 0;
 	directX.deviceContext->IASetVertexBuffers(0, 1, m_vertexBuffer.GetAddressOf(), &stride, &offset);
 	directX.deviceContext->IASetIndexBuffer(m_indexBuffer.Get(), DXGI_FORMAT_R32_UINT, offset);

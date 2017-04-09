@@ -173,7 +173,9 @@
   <ItemGroup>
     <ClCompile Include="GGApplication.cpp" />
     <ClCompile Include="GGCamera.cpp" />
+    <ClCompile Include="GGFreeView.cpp" />
     <ClCompile Include="GGGraphics.cpp" />
+    <ClCompile Include="GGInput.cpp" />
     <ClCompile Include="GGMesh.cpp" />
     <ClCompile Include="GGRenderer.cpp" />
     <ClCompile Include="GGShader.cpp" />
@@ -182,7 +184,9 @@
   <ItemGroup>
     <ClInclude Include="GGApplication.h" />
     <ClInclude Include="GGCamera.h" />
+    <ClInclude Include="GGFreeView.h" />
     <ClInclude Include="GGGraphics.h" />
+    <ClInclude Include="GGInput.h" />
     <ClInclude Include="GGMesh.h" />
     <ClInclude Include="GGRenderer.h" />
     <ClInclude Include="GGShader.h" />
