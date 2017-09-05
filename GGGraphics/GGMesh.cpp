@@ -40,7 +40,7 @@ GGMesh::GGMesh(GGDirectX& directX, vector<GGVertex>& vertices, vector<GGIndex>& 
 
 void GGMesh::Set(const GGDirectX& directX) const
 {
-	auto stride = sizeof(GGVertex);
+	UINT stride = sizeof(GGVertex);
 	UINT offset = 0;
 	directX.deviceContext->IASetVertexBuffers(0, 1, m_vertexBuffer.GetAddressOf(), &stride, &offset);
 	directX.deviceContext->IASetIndexBuffer(m_indexBuffer.Get(), DXGI_FORMAT_R32_UINT, offset);

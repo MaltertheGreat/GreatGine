@@ -40,6 +40,8 @@ GGRenderer::GGRenderer(HWND hWnd, int width, int height)
 
 	m_directX.deviceContext->OMSetRenderTargets(1, m_directX.renderTargetView.GetAddressOf(), nullptr);
 
+	m_directX.deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
 	D3D11_VIEWPORT vp;
 	vp.Width = static_cast<FLOAT>(width);
 	vp.Height = static_cast<FLOAT>(height);

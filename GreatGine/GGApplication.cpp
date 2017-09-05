@@ -13,25 +13,18 @@ void GGApplication::Run(int nCmdShow)
 	ShowWindow(m_hwnd, nCmdShow);
 
 	MSG msg{nullptr};
-	while (msg.message != WM_QUIT)
+	while (true)
 	{
 		while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
-			switch (msg.message)
+			if (msg.message == WM_QUIT)
 			{
-			case WM_KEYDOWN:
-				m_input.PressKey(msg.wParam);
-				break;
-
-			case WM_KEYUP:
-				m_input.ReleaseKey(msg.wParam);
-				break;
-
-			default:
-				break;
+				return;
 			}
 
 			DispatchMessage(&msg);
+
+			m_input.ProcessMessage(&msg);
 		}
 
 		Update();
@@ -60,7 +53,7 @@ HWND GGApplication::MakeWindow(HINSTANCE hInstance, const std::wstring& title, i
 	width = area.right - area.left;
 	height = area.bottom - area.top;
 
-	auto hWnd = CreateWindow(
+	const auto hWnd = CreateWindowW(
 		title.c_str(), title.c_str(),
 		dwStyle,
 		CW_USEDEFAULT, CW_USEDEFAULT, width, height,

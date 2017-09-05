@@ -2,7 +2,7 @@
 
 void GGInput::PressKey(WPARAM key)
 {
-	auto it = m_keys.find(key);
+	const auto it = m_keys.find(key);
 
 	if (it != m_keys.end())
 	{
@@ -12,11 +12,28 @@ void GGInput::PressKey(WPARAM key)
 
 void GGInput::ReleaseKey(WPARAM key)
 {
-	auto it = m_keys.find(key);
+	const auto it = m_keys.find(key);
 
 	if (it != m_keys.end())
 	{
 		it->second = false;
+	}
+}
+
+void GGInput::ProcessMessage(const MSG* msg)
+{
+	switch (msg->message)
+	{
+	case WM_KEYDOWN:
+		PressKey(msg->wParam);
+		break;
+
+	case WM_KEYUP:
+		ReleaseKey(msg->wParam);
+		break;
+
+	default:
+		break;
 	}
 }
 

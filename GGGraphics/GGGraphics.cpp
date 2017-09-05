@@ -5,8 +5,6 @@ using Microsoft::WRL::ComPtr;
 using std::vector;
 using std::array;
 
-#include "GGInput.h"
-
 GGGraphics::GGGraphics(GGInput& input, HWND hWnd, int width, int height)
 	:
 	m_renderer(hWnd, width, height),

@@ -3,8 +3,7 @@ using namespace DirectX;
 
 GGCamera::GGCamera(float fov, float aspect)
 {
-	XMStoreFloat4x4(&m_proj,
-	                XMMatrixPerspectiveFovLH(XMConvertToRadians(fov), aspect, 0.01f, 1000.0f));
+	XMStoreFloat4x4(&m_proj, XMMatrixPerspectiveFovLH(XMConvertToRadians(fov), aspect, 0.01f, 1000.0f));
 
 	Update();
 }

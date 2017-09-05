@@ -2,12 +2,6 @@
 #include <array>
 using namespace std;
 
-enum KEYS
-{
-	LEFT = 'E',
-	RIGHT = 'Q'
-};
-
 constexpr WPARAM KEY_FORWARD = 'W';
 constexpr WPARAM KEY_BACKWARD = 'S';
 constexpr WPARAM KEY_RIGHTWARD = 'D';
